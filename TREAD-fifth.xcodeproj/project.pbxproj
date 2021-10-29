@@ -16,6 +16,8 @@
 		56457AD5272C4A7200FEF556 /* TREAD_fifthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56457AD4272C4A7200FEF556 /* TREAD_fifthTests.swift */; };
 		56457ADF272C4A7200FEF556 /* TREAD_fifthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56457ADE272C4A7200FEF556 /* TREAD_fifthUITests.swift */; };
 		56457AE1272C4A7200FEF556 /* TREAD_fifthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56457AE0272C4A7200FEF556 /* TREAD_fifthUITestsLaunchTests.swift */; };
+		56457AEE272C4DEF00FEF556 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56457AED272C4DEF00FEF556 /* ContactListViewController.swift */; };
+		56457AF0272C566900FEF556 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56457AEF272C566900FEF556 /* ContactDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		56457ADA272C4A7200FEF556 /* TREAD-fifthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TREAD-fifthUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56457ADE272C4A7200FEF556 /* TREAD_fifthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TREAD_fifthUITests.swift; sourceTree = "<group>"; };
 		56457AE0272C4A7200FEF556 /* TREAD_fifthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TREAD_fifthUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		56457AED272C4DEF00FEF556 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
+		56457AEF272C566900FEF556 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				56457ABD272C4A7000FEF556 /* AppDelegate.swift */,
 				56457ABF272C4A7000FEF556 /* SceneDelegate.swift */,
 				56457AC1272C4A7000FEF556 /* ViewController.swift */,
+				56457AED272C4DEF00FEF556 /* ContactListViewController.swift */,
+				56457AEF272C566900FEF556 /* ContactDetailViewController.swift */,
 				56457AC3272C4A7000FEF556 /* Main.storyboard */,
 				56457AC6272C4A7200FEF556 /* Assets.xcassets */,
 				56457AC8272C4A7200FEF556 /* LaunchScreen.storyboard */,
@@ -259,6 +265,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				56457AC2272C4A7000FEF556 /* ViewController.swift in Sources */,
+				56457AF0272C566900FEF556 /* ContactDetailViewController.swift in Sources */,
+				56457AEE272C4DEF00FEF556 /* ContactListViewController.swift in Sources */,
 				56457ABE272C4A7000FEF556 /* AppDelegate.swift in Sources */,
 				56457AC0272C4A7000FEF556 /* SceneDelegate.swift in Sources */,
 			);
