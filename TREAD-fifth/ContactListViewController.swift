@@ -8,14 +8,22 @@
 import UIKit
 
 class ContactListViewController: UITableViewController {
-
+    
+//    func setPrimary(contact :Contact) {
+//        contacts.map{ (current) in
+//            current.primary = false
+//        }
+//        contact.primary = true
+//    }
+    
     class Contact{
         var name: String;
         var phone: Int;
         var primary: Bool = false;
-        init(name:String, phone :Int){
+        init(name:String, phone :Int, primary :Bool){
             self.name = name
             self.phone = phone
+            self.primary = primary
         }
         
         func setName(newName :String) {
@@ -25,15 +33,24 @@ class ContactListViewController: UITableViewController {
         func setPhone(newPhone :Int) {
             self.phone = newPhone
         }
-        
-        func setPrimary(newPrimary :Bool) {
-            self.primary = newPrimary
+
+    }
+    
+    var primaryContact: Contact = Contact(name: "bob", phone: 9930303303, primary: false)
+    
+    func findPrimary() {
+        for contact in contacts {
+            if (contact.primary == true) {
+                primaryContact = contact
+                print(primaryContact.name)
+            }
         }
+   
     }
     
     var contacts = [Contact]()
-    var newContact: Contact = Contact(name: "", phone: 0)
-    
+    var newContact: Contact = Contact(name: "", phone: 0, primary: false)
+
 
     @IBAction func cancel(segue:UIStoryboardSegue) {
       
@@ -43,16 +60,17 @@ class ContactListViewController: UITableViewController {
        let contactDetailVC = segue.source as! ContactDetailViewController
        let newContactName = contactDetailVC.name
        let newContactPhone = contactDetailVC.phone
-       newContact = Contact(name: newContactName, phone: newContactPhone)
+        newContact = Contact(name: newContactName, phone: newContactPhone, primary: false)
         
-       contacts.append(newContact)
-       tableView.reloadData()
+ 
+        contacts.append(newContact)
+        tableView.reloadData()
    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contacts = [Contact(name:"Mars", phone: 1230994810), Contact(name: "Sharice", phone: 2019330303)]
+        contacts = [Contact(name:"Mars", phone: 1230994810, primary: true), Contact(name: "Sharice", phone: 2019330303, primary: false)]
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
