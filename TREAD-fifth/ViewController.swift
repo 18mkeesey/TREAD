@@ -13,6 +13,8 @@ protocol ViewControllerDelegate: AnyObject {
 }
 
 class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
+    
+
    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         }
@@ -43,10 +45,10 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
     }
     
     @IBAction func sendMessageButtonAction(_ sender: Any) {
-        let view = ContactListViewController()
+        let view = ContactListViewController();
         view.findPrimary()
         
-        displayMessageInterface()
+//        displayMessageInterface()
     }
     
     @IBAction func myHomeUnwindAction(unwindSegue: UIStoryboardSegue){

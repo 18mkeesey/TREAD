@@ -15,15 +15,15 @@ class ContactListViewController: UITableViewController {
 //        }
 //        contact.primary = true
 //    }
+
     
     class Contact{
         var name: String;
         var phone: Int;
         var primary: Bool = false;
-        init(name:String, phone :Int, primary :Bool){
+        init(name:String, phone :Int){
             self.name = name
             self.phone = phone
-            self.primary = primary
         }
         
         func setName(newName :String) {
@@ -36,21 +36,24 @@ class ContactListViewController: UITableViewController {
 
     }
     
-    var primaryContact: Contact = Contact(name: "bob", phone: 9930303303, primary: false)
+    func setPrimary(contact :Contact) {
+        contact.primary = true
+    }
+    
     
     func findPrimary() {
-        for contact in contacts {
-            if (contact.primary == true) {
-                primaryContact = contact
-                print(primaryContact.name)
-            }
-        }
-   
+//        for contact in contacts {
+//            if (contact.primary == true) {
+//                primaryContact = contact
+//                print(primaryContact.name)
+//            }
+//        }
+        print(primaryContact.name)
     }
     
     var contacts = [Contact]()
-    var newContact: Contact = Contact(name: "", phone: 0, primary: false)
-
+    var newContact: Contact = Contact(name: "", phone: 0)
+    var primaryContact: Contact
 
     @IBAction func cancel(segue:UIStoryboardSegue) {
       
@@ -60,7 +63,7 @@ class ContactListViewController: UITableViewController {
        let contactDetailVC = segue.source as! ContactDetailViewController
        let newContactName = contactDetailVC.name
        let newContactPhone = contactDetailVC.phone
-        newContact = Contact(name: newContactName, phone: newContactPhone, primary: false)
+        newContact = Contact(name: newContactName, phone: newContactPhone)
         
  
         contacts.append(newContact)
@@ -70,7 +73,9 @@ class ContactListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contacts = [Contact(name:"Mars", phone: 1230994810, primary: true), Contact(name: "Sharice", phone: 2019330303, primary: false)]
+        contacts = [Contact(name:"Mars", phone: 1230994810), Contact(name: "Sharice", phone: 2019330303)]
+        self.primaryContact = contacts[0]
+        setPrimary(contact: primaryContact)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
