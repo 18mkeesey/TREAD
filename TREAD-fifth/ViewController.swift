@@ -7,6 +7,7 @@
 
 import UIKit
 import MessageUI
+import UserNotifications
 
 protocol ViewControllerDelegate: AnyObject {
     func update(_ contacts: [ContactListViewController.Contact])
@@ -14,15 +15,37 @@ protocol ViewControllerDelegate: AnyObject {
 
 class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
     
-
-   
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        //ask for notification permission
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound])
+            { (granted, error) in
+        }
+        //notification content
+        let content = UNMutableNotificationContent()
+        content.title = "Hey this is a notification"
+        content.body = "AAAAAAAAAAAAAAAAAAAAAAAAAA"
+        
+        //notification trigger
+        let date = Date().addingTimeInterval(15)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        //create the request
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        //register the request
+        center.add(request) { (error) in
+            //check the error parameter for errors
+        }
     }
+
     override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
@@ -48,7 +71,7 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
         let view = ContactListViewController();
         view.findPrimary()
         
-//        displayMessageInterface()
+        displayMessageInterface()
     }
     
     @IBAction func myHomeUnwindAction(unwindSegue: UIStoryboardSegue){
