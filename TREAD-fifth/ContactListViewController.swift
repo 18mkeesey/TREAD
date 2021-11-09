@@ -60,7 +60,7 @@ class ContactListViewController: UITableViewController {
        let contactDetailVC = segue.source as! ContactDetailViewController
        let newContactName = contactDetailVC.name
        let newContactPhone = contactDetailVC.phone
-        newContact = Contact(name: newContactName, phone: newContactPhone, primary: false)
+       newContact = Contact(name: newContactName, phone: newContactPhone, primary: false)
         
  
         contacts.append(newContact)

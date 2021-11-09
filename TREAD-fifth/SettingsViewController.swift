@@ -6,17 +6,25 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SettingsViewController: UIViewController {
+    var userName: String = "Mars"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func mySettingsUnwindAction(unwindSegue: UIStoryboardSegue){
     }
-    
+    @IBOutlet weak var field: UITextField!
+
+    @IBAction func getVal () {
+    let userName: String = field.text!
+        print(userName)
+    }
 }
 
     /*

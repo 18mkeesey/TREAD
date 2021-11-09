@@ -14,6 +14,7 @@ protocol ViewControllerDelegate: AnyObject {
 }
 
 class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
+    let SettingsView = SettingsViewController()
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         }
@@ -57,8 +58,8 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
         
         // Configure the fields of the interface.
         composeVC.recipients = ["17148831711"]
-        composeVC.body = "We did it?"
-        
+        composeVC.body = "\(SettingsView.userName) needs help!"
+        print("\(SettingsView.userName) needs help!")
         // Present the view controller modally.
         if MFMessageComposeViewController.canSendText() {
             self.present(composeVC, animated: true, completion: nil)
