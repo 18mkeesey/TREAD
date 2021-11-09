@@ -20,6 +20,7 @@
 		56457AF0272C566900FEF556 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56457AEF272C566900FEF556 /* ContactDetailViewController.swift */; };
 		565E2150272DD299006A3F95 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E214F272DD299006A3F95 /* SettingsViewController.swift */; };
 		565E2152272DE1EC006A3F95 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E2151272DE1EC006A3F95 /* Singleton.swift */; };
+		56841EF7273A4733001E0481 /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56841EF6273A4733001E0481 /* EditContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		56457AEF272C566900FEF556 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		565E214F272DD299006A3F95 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		565E2151272DE1EC006A3F95 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		56841EF6273A4733001E0481 /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				565E2151272DE1EC006A3F95 /* Singleton.swift */,
 				56457AED272C4DEF00FEF556 /* ContactListViewController.swift */,
 				56457AEF272C566900FEF556 /* ContactDetailViewController.swift */,
+				56841EF6273A4733001E0481 /* EditContactViewController.swift */,
 				56457AC3272C4A7000FEF556 /* Main.storyboard */,
 				56457AC6272C4A7200FEF556 /* Assets.xcassets */,
 				56457AC8272C4A7200FEF556 /* LaunchScreen.storyboard */,
@@ -273,6 +276,7 @@
 				56457AC2272C4A7000FEF556 /* ViewController.swift in Sources */,
 				565E2152272DE1EC006A3F95 /* Singleton.swift in Sources */,
 				56457AF0272C566900FEF556 /* ContactDetailViewController.swift in Sources */,
+				56841EF7273A4733001E0481 /* EditContactViewController.swift in Sources */,
 				56457AEE272C4DEF00FEF556 /* ContactListViewController.swift in Sources */,
 				56457ABE272C4A7000FEF556 /* AppDelegate.swift in Sources */,
 				56457AC0272C4A7000FEF556 /* SceneDelegate.swift in Sources */,

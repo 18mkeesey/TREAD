@@ -8,7 +8,7 @@
 import UIKit
 
 class ContactListViewController: UITableViewController {
-    
+    var currentrow = 0
 //    func setPrimary(contact :Contact) {
 //        contacts.map{ (current) in
 //            current.primary = false
@@ -67,6 +67,16 @@ class ContactListViewController: UITableViewController {
         tableView.reloadData()
    }
     
+    @IBAction func edit(segue:UIStoryboardSegue) {
+        let editContactVC = segue.source as! EditContactViewController
+        let updatedName = editContactVC.newname
+        let updatedPhone = editContactVC.newphone
+        
+        contacts[currentrow].name = updatedName
+        contacts[currentrow].phone = updatedPhone
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,19 +110,41 @@ class ContactListViewController: UITableViewController {
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) ->  [UITableViewRowAction]? {
+        let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "editEmergency") as! EditContactViewController
+            self.present(nextViewController, animated:true, completion:nil)
+            
+            self.currentrow = indexPath.row
+        
+        }
+        editButton.backgroundColor = UIColor.blue
+        
+        let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
+            self.contacts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        deleteButton.backgroundColor = UIColor.red
+        
+        return [editButton, deleteButton]
+    }
+    
 
-    /*
+   /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            contacts.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
