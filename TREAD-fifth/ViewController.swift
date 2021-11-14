@@ -6,18 +6,24 @@
 //
 
 import UIKit
-import MessageUI
-import UserNotifications
-import CocoaMQTT
+import MessageUI //sending texts
+import UserNotifications //notifications
+import CocoaMQTT //for MQTT protocol
+import MapKit //location services
+import CoreLocation //location services
 
 protocol ViewControllerDelegate: AnyObject {
     func update(_ contacts: [ContactListViewController.Contact])
 }
 
-class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
+
+class ViewController: UIViewController, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     let SettingsView = SettingsViewController()
     
     var mqtt: CocoaMQTT!
+    
+    let locationManager = CLLocationManager()
+
     
     @IBOutlet weak var datareceived: UITextView!
     
@@ -27,6 +33,15 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //location permissions
+        locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        //MQTT
         NotificationCenter.default.addObserver(self, selector: #selector(didActivate), name: UIScene.didActivateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIScene.didEnterBackgroundNotification, object: nil)
         
@@ -57,7 +72,12 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
             //check the error parameter for errors
         }
     }
-
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+           guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+           print("locations = \(locValue.latitude) \(locValue.longitude)")
+       }
+    
     override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
@@ -82,12 +102,12 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
     @IBAction func sendMessageButtonAction(_ sender: Any) {
         let view = ContactListViewController();
         view.findPrimary()
-        
         displayMessageInterface()
     }
     
     @IBAction func myHomeUnwindAction(unwindSegue: UIStoryboardSegue){
     }
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: UIScene.didActivateNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIScene.didEnterBackgroundNotification, object: nil)
@@ -108,10 +128,10 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
         var connected:Bool = false
         
         //1. Definition of the client Identificator
-        //let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
+        let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
 
         //2. Definition of mqtt broker connection
-        mqtt = CocoaMQTT(clientID: "iOS Device", host: "10.40.11.10", port: 1883)
+        mqtt = CocoaMQTT(clientID: clientID, host: "10.40.11.10", port: 1883)
         
         //3. Setup the username and password if supported otherwise do not set
         //mqtt.username = "test"

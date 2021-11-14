@@ -163,7 +163,6 @@
 				3CA7EF4788405DDC17296895 /* Pods-TREAD-fifth.debug.xcconfig */,
 				021F59CE8B3B630B1F262827 /* Pods-TREAD-fifth.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -532,6 +531,8 @@
 				DEVELOPMENT_TEAM = P7NGUY467Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TREAD-fifth/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -561,6 +562,8 @@
 				DEVELOPMENT_TEAM = P7NGUY467Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TREAD-fifth/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
